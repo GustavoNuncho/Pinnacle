@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\BaseState.cs" />
+     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ChaseState.cs" />
+     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ShortRangeEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\WanderState.cs" />

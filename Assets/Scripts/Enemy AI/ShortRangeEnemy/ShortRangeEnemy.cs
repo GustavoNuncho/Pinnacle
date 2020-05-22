@@ -31,23 +31,27 @@ public class ShortRangeEnemy : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     
     public StateMachine  stateMachine =>  GetComponent<StateMachine>();
+    public PlayerManager playerManager => GetComponent<PlayerManager>();
 
     // Start is called before the first frame update
     void Awake()
     {
       InitializeStateMachine();
+      
 
     }
 
     void Update()
     {
-        //currentDirection
+        
+        
         
     }
     private void InitializeStateMachine(){
         var states = new Dictionary<Type, BaseState>()
         {
-            {typeof(WanderState), new WanderState(this)}
+            {typeof(WanderState), new WanderState(this)},
+            {typeof(ChaseState), new ChaseState(this)}
 
         };
          stateMachine.SetState(states);
