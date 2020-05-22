@@ -293,9 +293,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 454866147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c72f2e366c03bd4c8e8d8906e0764d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d0d84a1d1060141829c59e0afc7048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hearRadius: 0
+  lookRadius: 0
+  playerAttackRadius: 0
+  currentDirection: {x: 0, y: 0}
+  movingRight: 0
+  wanderTimer: 0
+  wanderMin: 2
+  wanderMax: 5
+  speed: 3
 --- !u!114 &454866153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,10 +314,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 454866147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d0d84a1d1060141829c59e0afc7048, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c72f2e366c03bd4c8e8d8906e0764d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 2.3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +712,6 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 446101419}
   m_CeilingCheck: {fileID: 1092954463}
   m_CrouchDisableCollider: {fileID: 1125914011}
-  m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -944,8 +951,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434941942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29534847, y: -5.4043646, z: 12.085276}
-  m_LocalScale: {x: 18.837, y: 1, z: 1}
+  m_LocalPosition: {x: 21.459, y: -5.4043646, z: 12.085276}
+  m_LocalScale: {x: 62.350468, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1208162523}
   m_RootOrder: 0

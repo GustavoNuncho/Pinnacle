@@ -22,10 +22,7 @@ public class StateMachine : MonoBehaviour
     {
         if(CurrentState == null)
         {
-            Debug.Log("Current state is null");
-            CurrentState = _availableStates.Values.First();
-            Debug.Log("Current State is in default");
-           
+            CurrentState = _availableStates.Values.First(); 
         }
 
         var nextState = CurrentState.Tick();
