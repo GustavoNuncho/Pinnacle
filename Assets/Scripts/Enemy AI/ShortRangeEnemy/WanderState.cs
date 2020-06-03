@@ -7,25 +7,33 @@ using System.Linq;
 
 public class WanderState : BaseState
 {
+    
 
     private ShortRangeEnemy _ShortRangeEnemy;
-    public float originOffset = 0.5f;
+    public float originOffset = 2.0f;
     private float raycastMaxDistance;
 
     private float direction;
 
     private Vector3 playerPosition;
 
+    private float wanderingTime;
+    
+
     public WanderState(ShortRangeEnemy shortRangeEnemy) : base(shortRangeEnemy.gameObject)
     {
         _ShortRangeEnemy =  shortRangeEnemy;
     }
+    
 
 
         public override Type Tick()
         {
-            playerPosition = _ShortRangeEnemy.playerManager.player.transform.position;
+            _ShortRangeEnemy.myAnimator.SetBool("Chase", true);
 
+
+            playerPosition = _ShortRangeEnemy.playerManager.player.transform.position;
+            wanderingTime += Time.deltaTime;
           
             if(Vector3.Distance(transform.position,playerPosition) <= _ShortRangeEnemy.hearRadius)
             {
@@ -33,38 +41,54 @@ public class WanderState : BaseState
             }
             _ShortRangeEnemy.wanderTimer -= Time.deltaTime;
 
-            if(_ShortRangeEnemy.wanderTimer <= 0){
-                if(!_ShortRangeEnemy.movingRight){
-                    _ShortRangeEnemy.movingRight = true;
-                    _ShortRangeEnemy.wanderTimer = UnityEngine.Random.Range(_ShortRangeEnemy.wanderMin, _ShortRangeEnemy.wanderMax);
-                }
-                else{
-                    _ShortRangeEnemy.movingRight = false;
-                     _ShortRangeEnemy.wanderTimer = UnityEngine.Random.Range(_ShortRangeEnemy.wanderMin, _ShortRangeEnemy.wanderMax);
+            WanderCheck();
 
-                }
-            }
-        
-             if( Detection(direction).collider.tag  == "Ground" && !_ShortRangeEnemy.movingRight )
-             {
-                _ShortRangeEnemy.movingRight = true;
-            }
-            else if(Detection(direction).collider.tag  == "Gronud " && _ShortRangeEnemy.movingRight)
-            {
-                _ShortRangeEnemy.movingRight = false;
-            }
-            
             if(_ShortRangeEnemy.movingRight){
                 direction = 1.0f;
                 _ShortRangeEnemy.EnemyMove(direction);
             }
-            else if(!_ShortRangeEnemy.movingRight) {
+            else {
                 direction = -1.0f;
                 _ShortRangeEnemy.EnemyMove(direction);
+            }   
+
+        
+            if( Detection(direction).collider.tag  == "Ground" && _ShortRangeEnemy.movingRight == false)
+            {
+                _ShortRangeEnemy.movingRight = true;
+                _ShortRangeEnemy.currentDirection = 1;
+                _ShortRangeEnemy.flip();
             }
-            return null;
+            else if(Detection(direction).collider.tag  == "Ground" && _ShortRangeEnemy.movingRight)
+            {
+                _ShortRangeEnemy.movingRight = false;
+                _ShortRangeEnemy.currentDirection = -1;
+                _ShortRangeEnemy.flip();
+            }
+           
+            return typeof(WanderState); 
 
         }
+        public void WanderCheck()
+    { 
+       if(_ShortRangeEnemy.wanderTimer  < 0.1f )
+       {
+           _ShortRangeEnemy.wanderTimer = 5.0f;
+           if(_ShortRangeEnemy.movingRight = true)
+           {
+               _ShortRangeEnemy.movingRight = false;
+               _ShortRangeEnemy.currentDirection = -1;
+               _ShortRangeEnemy.flip();
+               
+           }
+           else
+           {
+               _ShortRangeEnemy.movingRight = true;
+               _ShortRangeEnemy.currentDirection = 1;
+                _ShortRangeEnemy.flip();
+           }
+       }
+    }
 
         private RaycastHit2D Detection(float direction)
         {
