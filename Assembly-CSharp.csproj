@@ -65,6 +65,7 @@
     <Compile Include="Assets\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Bandits - Pixel Art\Demo\CharacterSelector_Bandit.cs" />
     <Compile Include="Assets\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
+    <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\BaseState.cs" />
     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ChaseState.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\WanderState.cs" />
     <Compile Include="Assets\Scripts\OLDPLAYERMOVEMENT.cs" />
+    <Compile Include="Assets\Scripts\PlayerCombat.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
