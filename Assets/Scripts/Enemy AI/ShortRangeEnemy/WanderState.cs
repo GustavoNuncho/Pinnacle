@@ -29,25 +29,45 @@ public class WanderState : BaseState
 
         public override Type Tick()
         {
+            Debug.Log("WanderState");
             _ShortRangeEnemy.myAnimator.SetBool("Chase", true);
+            _ShortRangeEnemy.myAnimator.SetBool("Attack", false);
 
 
             playerPosition = _ShortRangeEnemy.playerManager.player.transform.position;
             wanderingTime += Time.deltaTime;
           
-            if(Vector3.Distance(transform.position,playerPosition) <= _ShortRangeEnemy.hearRadius)
+            if(Vector3.Distance(transform.position,playerPosition) <= _ShortRangeEnemy.hearRadius && Vector3.Distance(transform.position,playerPosition) > _ShortRangeEnemy.lookRadius)
+            {
+                _ShortRangeEnemy.Chasing = true;    
+               
+            }
+            if(_ShortRangeEnemy.Chasing == true)
             {
                 return typeof(ChaseState);
+            }
+            
+            if(Vector3.Distance(transform.position,playerPosition) < _ShortRangeEnemy.lookRadius)
+            {
+                //direction = 0.0f;
+                _ShortRangeEnemy.Attacking = true;
+            }
+
+            if(_ShortRangeEnemy.Attacking == true)
+            {
+                return typeof(AttackState);
             }
             _ShortRangeEnemy.wanderTimer -= Time.deltaTime;
 
             WanderCheck();
 
-            if(_ShortRangeEnemy.movingRight){
+            if(_ShortRangeEnemy.movingRight)
+            {
                 direction = 1.0f;
                 _ShortRangeEnemy.EnemyMove(direction);
             }
-            else {
+            else 
+            {
                 direction = -1.0f;
                 _ShortRangeEnemy.EnemyMove(direction);
             }   
@@ -65,21 +85,19 @@ public class WanderState : BaseState
                 _ShortRangeEnemy.currentDirection = -1;
                 _ShortRangeEnemy.flip();
             }
-           
-            return typeof(WanderState); 
 
+            return typeof(WanderState); 
         }
         public void WanderCheck()
     { 
        if(_ShortRangeEnemy.wanderTimer  < 0.1f )
        {
-           _ShortRangeEnemy.wanderTimer = 5.0f;
-           if(_ShortRangeEnemy.movingRight = true)
+           _ShortRangeEnemy.wanderTimer = UnityEngine.Random.Range(_ShortRangeEnemy.wanderMin, _ShortRangeEnemy.wanderMax);
+           if(_ShortRangeEnemy.movingRight == true)
            {
                _ShortRangeEnemy.movingRight = false;
                _ShortRangeEnemy.currentDirection = -1;
                _ShortRangeEnemy.flip();
-               
            }
            else
            {
@@ -98,7 +116,5 @@ public class WanderState : BaseState
             Vector2 currentDirection = new Vector2(direction, 0);
             Debug.DrawRay(startingPosition, currentDirection, Color.black);
             return Physics2D.Raycast(startingPosition, currentDirection, raycastMaxDistance);  
-        }
-
-        
+        }        
     }
