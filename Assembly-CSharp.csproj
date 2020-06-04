@@ -49,12 +49,14 @@
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\AttackState.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\BaseState.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ChaseState.cs" />
+     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ShortRangeEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\TakeHitState.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\WanderState.cs" />
      <Compile Include="Assets\Scripts\OLDPLAYERMOVEMENT.cs" />
+     <Compile Include="Assets\Scripts\PlayerCombat.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
