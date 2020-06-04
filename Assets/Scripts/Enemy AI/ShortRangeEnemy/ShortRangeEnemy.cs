@@ -12,15 +12,18 @@ public class ShortRangeEnemy : MonoBehaviour
 
     public float hearRadius;
     public float lookRadius;
-    public float playerAttackRadius;
     public float currentDirection;
     public BoxCollider2D boxCollider => GetComponent<BoxCollider2D>();
-    public Rigidbody2D rigidbody2D => GetComponent<Rigidbody2D>();
+    new public Rigidbody2D rigidbody => GetComponent<Rigidbody2D>();
     
     public bool movingRight;
 
+    public bool Wandering;
+    public bool Chasing;
+    public bool Attacking;
+
     public Animator myAnimator => GetComponent<Animator>();
-    //public Animator animator => GetComponent<Animator>();
+   
 
     // Enemy Stats
 
@@ -33,10 +36,12 @@ public class ShortRangeEnemy : MonoBehaviour
     public float speed;
 
     private Vector3 m_Velocity = Vector3.zero;
+
+    
     
     public StateMachine  stateMachine =>  GetComponent<StateMachine>();
     public PlayerManager playerManager => GetComponent<PlayerManager>();
-    public SpriteRenderer renderer => GetComponent<SpriteRenderer>();
+    new public SpriteRenderer renderer => GetComponent<SpriteRenderer>();
 
     // Start is called before the first frame update
     void Awake()
@@ -57,7 +62,8 @@ public class ShortRangeEnemy : MonoBehaviour
         var states = new Dictionary<Type, BaseState>()
         {
             {typeof(WanderState), new WanderState(this)},
-            {typeof(ChaseState), new ChaseState(this)}
+            {typeof(ChaseState), new ChaseState(this)},
+            {typeof(AttackState), new AttackState(this)}
 
         };
          stateMachine.SetState(states);
@@ -69,14 +75,13 @@ public class ShortRangeEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position,  hearRadius);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,  lookRadius);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position,  playerAttackRadius);  
+    
     }
 
     public void EnemyMove(float direction){
         Debug.Log("Enemy Moving");
-        Vector3 targetVelocity = new Vector2(direction * speed, rigidbody2D.velocity.y );
-        rigidbody2D.velocity = Vector3.SmoothDamp(rigidbody2D.velocity, targetVelocity,ref m_Velocity , 0.3f );
+        Vector3 targetVelocity = new Vector2(direction * speed, rigidbody.velocity.y );
+        rigidbody.velocity = Vector3.SmoothDamp(rigidbody.velocity, targetVelocity,ref m_Velocity , 0.3f );
 
     }
 
@@ -92,15 +97,16 @@ public class ShortRangeEnemy : MonoBehaviour
         }
     }
 
-    public void WanderCheck()
-    { 
-       //if(wanderTimer < 0.0f)
-        Debug.Log("Hello");
-    }
-
    public void DestroyEnemy()
    {
        Destroy(this.gameObject, 4.0f);
+   }
+
+
+
+   public void TakeDamage()
+   {
+       //playerManager.player.
    }
 
 

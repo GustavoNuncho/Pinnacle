@@ -17,42 +17,57 @@ public class ChaseState : BaseState
     }
 
     public override Type Tick(){
+        Debug.Log("ChaseState");
+       
 
-        if(Vector3.Distance(transform.position,playerPosition) > _ShortRangeEnemy.hearRadius)
-            {
-                return typeof(WanderState);
-            }
-        
+
         playerPosition = _ShortRangeEnemy.playerManager.player.transform.position;
 
         if(playerPosition.x  < _ShortRangeEnemy.transform.position.x)
         {
             if(_ShortRangeEnemy.movingRight){
-                    _ShortRangeEnemy.movingRight = false;
-                    direction = -1.0f;
-                    _ShortRangeEnemy.EnemyMove(direction);
+                _ShortRangeEnemy.movingRight = false;
+                direction = -1.0f;
+                
+                _ShortRangeEnemy.EnemyMove(direction);
+                _ShortRangeEnemy.currentDirection = -1;
+                _ShortRangeEnemy.flip();
             }
             else
             {
                 direction = -1.0f;
-                    _ShortRangeEnemy.EnemyMove(direction);
+                
+                _ShortRangeEnemy.EnemyMove(direction);
+                _ShortRangeEnemy.currentDirection = -1;
+                _ShortRangeEnemy.flip();
             }
         }
         else
         {
-            if(!_ShortRangeEnemy.movingRight){
-                    _ShortRangeEnemy.movingRight = true;
-                    direction = 1.0f;
-                    _ShortRangeEnemy.EnemyMove(direction);
+            if(!_ShortRangeEnemy.movingRight)
+            {
+                _ShortRangeEnemy.movingRight = true;
+                direction = 1.0f;
+                _ShortRangeEnemy.EnemyMove(direction);
+                _ShortRangeEnemy.currentDirection = 1;
+                _ShortRangeEnemy.flip();
             }
             else
             {
                 direction = 1.0f;
                 _ShortRangeEnemy.EnemyMove(direction);
+                _ShortRangeEnemy.currentDirection = 1;
+                _ShortRangeEnemy.flip();
             }
+        }
+         if(Vector3.Distance(transform.position,playerPosition) > _ShortRangeEnemy.hearRadius)
+        {
+            _ShortRangeEnemy.Chasing = false;
+            return typeof(WanderState);
         }
 
         //Debug.Log("Made it to chase state");
-        return typeof(ChaseState);
+        _ShortRangeEnemy.Chasing = false;
+        return typeof(WanderState);
     }
 }
