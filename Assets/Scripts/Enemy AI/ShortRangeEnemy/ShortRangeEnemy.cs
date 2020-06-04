@@ -36,6 +36,8 @@ public class ShortRangeEnemy : MonoBehaviour
     public float speed;
 
     private Vector3 m_Velocity = Vector3.zero;
+
+    
     
     public StateMachine  stateMachine =>  GetComponent<StateMachine>();
     public PlayerManager playerManager => GetComponent<PlayerManager>();
@@ -98,6 +100,13 @@ public class ShortRangeEnemy : MonoBehaviour
    public void DestroyEnemy()
    {
        Destroy(this.gameObject, 4.0f);
+   }
+
+
+
+   public void TakeDamage()
+   {
+       //playerManager.player.
    }
 
 

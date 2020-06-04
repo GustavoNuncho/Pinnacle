@@ -44,11 +44,12 @@ public class ChaseState : BaseState
         }
         else
         {
-            if(!_ShortRangeEnemy.movingRight){
-                    _ShortRangeEnemy.movingRight = true;
-                    direction = 1.0f;
-                    _ShortRangeEnemy.EnemyMove(direction);
-                    _ShortRangeEnemy.currentDirection = 1;
+            if(!_ShortRangeEnemy.movingRight)
+            {
+                _ShortRangeEnemy.movingRight = true;
+                direction = 1.0f;
+                _ShortRangeEnemy.EnemyMove(direction);
+                _ShortRangeEnemy.currentDirection = 1;
                 _ShortRangeEnemy.flip();
             }
             else
