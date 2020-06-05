@@ -21,9 +21,10 @@ public class ShortRangeEnemy : MonoBehaviour
     public bool Wandering;
     public bool Chasing;
     public bool Attacking;
+    public bool dead;
 
     public Animator myAnimator => GetComponent<Animator>();
-   
+   public Enemy enemy => GetComponent<Enemy>();
 
     // Enemy Stats
 
@@ -37,7 +38,11 @@ public class ShortRangeEnemy : MonoBehaviour
 
     private Vector3 m_Velocity = Vector3.zero;
 
+    public float takingHit;
+
+
     
+    public float health; 
     
     public StateMachine  stateMachine =>  GetComponent<StateMachine>();
     public PlayerManager playerManager => GetComponent<PlayerManager>();
@@ -52,7 +57,15 @@ public class ShortRangeEnemy : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+
+
+        if(health > enemy.currentHealth)
+        {
+            health = enemy.currentHealth;
+            myAnimator.SetTrigger("TakeHit");
+            DamageStateChange();
+        }
         
         
         
@@ -63,7 +76,9 @@ public class ShortRangeEnemy : MonoBehaviour
         {
             {typeof(WanderState), new WanderState(this)},
             {typeof(ChaseState), new ChaseState(this)},
-            {typeof(AttackState), new AttackState(this)}
+            {typeof(AttackState), new AttackState(this)},
+            {typeof(TakeHitState), new TakeHitState(this)},
+            {typeof(DieState), new DieState(this)}
 
         };
          stateMachine.SetState(states);
@@ -108,7 +123,20 @@ public class ShortRangeEnemy : MonoBehaviour
    {
        //playerManager.player.
    }
-
+    private void DamageStateChange()
+   {
+       var states = new Dictionary<Type, BaseState>()
+       {
+           {typeof(TakeHitState), new TakeHitState(this)},
+           {typeof(DieState), new DieState(this)}
+       };
+       if(health <= 0){
+           stateMachine.SwitchToNewState(states.Values.Last().Tick());
+       }
+       else{
+           stateMachine.SwitchToNewState(states.Values.First().Tick());
+       }
+   }
 
 }
 
