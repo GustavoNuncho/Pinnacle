@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
 
-    public Slider healthSlider;
+    public    Slider healthSlider;
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -18,6 +19,12 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+    }
+
+    void Update()
+    {
+        UpdateHealthSlider();
+    
     }
 
     public void TakeDamage(int damage)
@@ -36,6 +43,10 @@ public class Enemy : MonoBehaviour
         _ShortRangeEnemy.enabled = false;
 
         Destroy(this.gameObject, 2.0f);
+    }
+     public void UpdateHealthSlider()
+    {
+        healthSlider.value = currentHealth;
     }
 
 }
