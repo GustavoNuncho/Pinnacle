@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public Slider healthSlider;
     public int maxHealth = 100;
     public int currentHealth;
 

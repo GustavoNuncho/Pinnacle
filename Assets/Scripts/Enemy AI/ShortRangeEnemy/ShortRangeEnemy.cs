@@ -39,13 +39,14 @@ public class ShortRangeEnemy : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
 
     public float takingHit;
-
+    public Collider2D attackcollider;
 
     
     public float health; 
     
     public StateMachine  stateMachine =>  GetComponent<StateMachine>();
     public PlayerManager playerManager => GetComponent<PlayerManager>();
+    private PlayerHealth playerhealth => playerManager.player.GetComponent<PlayerHealth>();
     new public SpriteRenderer renderer => GetComponent<SpriteRenderer>();
 
     // Start is called before the first frame update
@@ -136,6 +137,24 @@ public class ShortRangeEnemy : MonoBehaviour
        else{
            stateMachine.SwitchToNewState(states.Values.First().Tick());
        }
+   }
+
+   public void Attackplayer()
+   {
+       attackcollider.enabled = true;
+
+            playerhealth.TakeDamage();
+
+            playerhealth.CheckHealth();
+
+            playerhealth.UpdateHealthSlider();
+
+       attackcollider.enabled = false;
+
+   }
+   public void Sheathe()
+   {
+       attackcollider.enabled = false;
    }
 
 }
