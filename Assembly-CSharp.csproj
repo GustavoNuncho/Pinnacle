@@ -45,10 +45,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Bandits - Pixel Art\Demo\Bandit.cs" />
+     <Compile Include="Assets\Bandits - Pixel Art\Demo\CharacterSelector_Bandit.cs" />
+     <Compile Include="Assets\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\AttackState.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\BaseState.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ChaseState.cs" />
+     <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\DieState.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Enemy AI\ShortRangeEnemy\ShortRangeEnemy.cs" />

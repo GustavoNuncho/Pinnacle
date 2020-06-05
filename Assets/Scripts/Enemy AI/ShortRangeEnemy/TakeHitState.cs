@@ -15,7 +15,7 @@ public class TakeHitState : BaseState
     public override Type Tick()
     {
         
-        _ShortRangeEnemy.myAnimator.SetTrigger("TakeHit");
+       
         return typeof(TakeHitState);
 
     }

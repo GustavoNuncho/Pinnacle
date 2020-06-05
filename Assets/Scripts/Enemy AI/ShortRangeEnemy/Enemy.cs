@@ -6,7 +6,11 @@ public class Enemy : MonoBehaviour
 {
 
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
+
+     public StateMachine  stateMachine =>  GetComponent<StateMachine>();
+      public ShortRangeEnemy _ShortRangeEnemy => GetComponent<ShortRangeEnemy>();
+
 
 
     // Start is called before the first frame update
@@ -17,24 +21,20 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        
+            currentHealth -= damage;
+            Debug.Log(currentHealth);
+            _ShortRangeEnemy.stateMachine.enabled = false;
 
         //Play hurt animation
-
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
-    void Die()
-    {
-        Debug.Log("Enemy died!");
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void Die()
     {
         
+        _ShortRangeEnemy.enabled = false;
+
+        Destroy(this.gameObject, 2.0f);
     }
+
 }

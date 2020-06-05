@@ -46,6 +46,7 @@ public class WanderState : BaseState
             {
                 return typeof(ChaseState);
             }
+
             
             if(Vector3.Distance(transform.position,playerPosition) < _ShortRangeEnemy.lookRadius)
             {
