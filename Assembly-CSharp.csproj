@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{376E426C-4478-4750-4713-48E971333E27}</ProjectGuid>
+    <ProjectGuid>{7F376EDF-38F4-A090-ACF0-CB38423C6097}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,6 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Bandits - Pixel Art\Demo\Bandit.cs" />
+    <Compile Include="Assets\Bandits - Pixel Art\Demo\CharacterSelector_Bandit.cs" />
+    <Compile Include="Assets\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
+    <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Scripts\Boss_Run.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
@@ -80,37 +84,37 @@
     <Compile Include="Assets\Sprites\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
     <None Include="Assets\Sprites\Hero_Knight_2\License.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Repos/CSE441/Pinnacle Collab/Pinnacle-develop/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Repos/Github/Pinnacle/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
